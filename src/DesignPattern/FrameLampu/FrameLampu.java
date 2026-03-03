@@ -17,6 +17,7 @@ public class FrameLampu extends JFrame {
     this.setUndecorated(true);
     this.setBackground(new Color(0,0,0, 0));
 
+
     this.add(lampu);
     this.pack();
     this.setVisible(true);

@@ -118,7 +118,6 @@ public class LampuApplication {
       }
     });
 
-
     frame3.setVisible(true);
   }
 }
