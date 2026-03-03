@@ -7,8 +7,7 @@ import java.util.Scanner;
 
 public class SimpleSerial {
   public static void main(String[] args) throws IOException {
-    // 1. Inisialisasi Port (Ganti "COM3" sesuai port Arduino Anda)
-    SerialPort port = SerialPort.getCommPort("COM3");
+    SerialPort port = SerialPort.getCommPort("COM8");
     port.setBaudRate(9600);
 
     if (port.openPort()) {
@@ -17,17 +16,15 @@ public class SimpleSerial {
       System.out.println("Gagal Membuka Port.");
       return;
     }
+//      port.getOutputStream().write('r');
+//      port.getOutputStream().flush();
 
-    // 2. Kirim perintah '1' ke Arduino
-    port.getOutputStream().write('1');
-    port.getOutputStream().flush();
-
-    // 3. Baca balasan dari Arduino
-    Scanner pambaca = new Scanner(port.getInputStream());
-    if (pambaca.hasNextLine()) {
-      System.out.println("Respon Arduino: " + pambaca.nextLine());
+    while (true) {
+      Scanner pambaca = new Scanner(port.getInputStream());
+      if (pambaca.hasNextLine()) {
+        System.out.println("Respon Arduino: " + pambaca.nextLine());
+      }
+//      port.closePort();
     }
-
-    port.closePort(); // Tutup koneksi
   }
 }
