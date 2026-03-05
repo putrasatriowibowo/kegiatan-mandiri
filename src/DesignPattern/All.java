@@ -14,10 +14,15 @@ import java.net.URL;
 
 public class All {
   public static JFrame frame1;
-  public static JFrame frame2;
-  public static JFrame frame3;
   public static JLabel lampu1;
+
+  public static JFrame frame2;
   public static JLabel lampu2;
+
+  public static JFrame frame3;
+  public static JLabel lampu3;
+
+  public static JFrame frame4;
   public static JButton button1;
 
   public static FlatSVGIcon onIcon = new FlatSVGIcon("resource/on-vector.svg", 200, 200);
@@ -94,10 +99,25 @@ public class All {
               clip.start();
             });
             break;
+          case "3":
+            SwingUtilities.invokeLater(() -> {
+              lampu3.setIcon(onIcon);
+              clip.setFramePosition(0);
+              clip.start();
+            });
+            break;
+          case "4":
+            SwingUtilities.invokeLater(() -> {
+              lampu3.setIcon(onIcon);
+              clip.setFramePosition(0);
+              clip.start();
+            });
+            break;
           case "5":
             SwingUtilities.invokeLater(() -> {
-              lampu1.setIcon(offIcon);
-              lampu2.setIcon(offIcon);
+              lampu3.setIcon(onIcon);
+              clip.setFramePosition(0);
+              clip.start();
             });
             break;
         }
@@ -122,6 +142,13 @@ public class All {
     frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame3.setResizable(false);
     frame3.setLocation(400, 0);
+    frame3.setUndecorated(true);
+    frame3.setBackground(new Color(0, 0, 0, 0));
+
+    frame4 = new JFrame();
+    frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame4.setResizable(false);
+    frame4.setLocation(600, 0);
 
     lampu1 = new JLabel();
     lampu1.setBackground(new Color(0, 0, 0, 0));
@@ -133,6 +160,11 @@ public class All {
     lampu2.setBounds(0, 0, 200, 200);
     lampu2.setIcon(offIcon);
 
+    lampu3 = new JLabel();
+    lampu3.setBackground(new Color(0, 0, 0, 0));
+    lampu3.setBounds(0, 0, 200, 200);
+    lampu3.setIcon(offIcon);
+
     button1 = new JButton("RESET");
     button1.addActionListener(e -> {
       String perintah = "r\n";
@@ -140,18 +172,21 @@ public class All {
       SwingUtilities.invokeLater(() -> {
         lampu1.setIcon(offIcon);
         lampu2.setIcon(offIcon);
+        lampu3.setIcon(offIcon);
       });
     });
 
     frame1.add(lampu1);
     frame2.add(lampu2);
-    frame3.add(button1);
+    frame3.add(lampu3);
+    frame4.add(button1);
     frame1.pack();
     frame2.pack();
     frame3.pack();
+    frame4.pack();
     frame1.setVisible(true);
     frame2.setVisible(true);
     frame3.setVisible(true);
+    frame4.setVisible(true);
   }
-
 }
